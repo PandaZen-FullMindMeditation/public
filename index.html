@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FullMind | Fall Asleep Faster, Calm Racing Thoughts, and Reset</title>
+  <meta name="description" content="FullMind is a sleep-first meditation app for people with racing thoughts, stress, bedtime overthinking, and focus fatigue. Calm down faster with immersive scenes, layered sleep sounds, and gentle breathing visuals." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta property="og:title" content="FullMind | Sleep-First Meditation That Feels Like Escape" />
+  <meta property="og:description" content="A sleep-first meditation app for overthinking, stress, and bedtime restlessness. Fall asleep faster with immersive scenes, layered audio, and calming visuals." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="FullMind" />
+  <meta property="og:url" content="https://pandazen-fullmindmeditation.github.io/fullmind-site/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="keywords" content="sleep app, fall asleep fast, calm anxiety, stress relief, racing thoughts, overthinking at night, meditation app, sleep sounds, focus app, bedtime relaxation, mindfulness app, calming sounds, guided breathing visuals, sleep support" />
+  <meta name="theme-color" content="#06110d" />
+  <style>
+    :root {
+      --bg: #030605;
+      --bg-soft: #07110e;
+      --panel: rgba(12, 19, 16, 0.86);
+      --panel-strong: rgba(8, 13, 11, 0.96);
+      --card: rgba(255, 255, 255, 0.05);
+      --card-strong: rgba(255, 255, 255, 0.08);
+      --text: #eef7f3;
+      --muted: #9cb0a8;
+      --accent: #5ff5a4;
+      --accent-2: #8fc8ff;
+      --accent-warm: #ffe28a;
+      --danger: #ffb87c;
+      --border: rgba(255, 255, 255, 0.09);
+      --shadow: 0 30px 90px rgba(0, 0, 0, 0.36);
+      --radius: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "SF Pro Display", "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 14%, rgba(95, 245, 164, 0.11), transparent 20%),
+        radial-gradient(circle at 88% 18%, rgba(143, 200, 255, 0.12), transparent 18%),
+        radial-gradient(circle at 50% 75%, rgba(255, 226, 138, 0.06), transparent 24%),
+        linear-gradient(180deg, #07110d 0%, var(--bg) 100%);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .shell {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(18px);
+      background: rgba(3, 6, 5, 0.62);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .topbar-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 14px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 28px rgba(0,0,0,0.24);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      color: var(--muted);
+      transition: 180ms ease;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .nav .cta {
+      color: #03100b;
+      background: linear-gradient(135deg, var(--accent), #9af3ff);
+      font-weight: 700;
+    }
+
+    .hero {
+      padding: 28px 0 18px;
+    }
+
+    .advisory {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 184, 124, 0.10);
+      border: 1px solid rgba(255, 184, 124, 0.24);
+      color: #ffd9b5;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      margin-bottom: 18px;
+    }
+
+    .hero-card,
+    .section,
+    .quote-card,
+    .faq,
+    .footer-card {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-card {
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(143, 200, 255, 0.12), transparent 24%),
+        radial-gradient(circle at left center, rgba(95, 245, 164, 0.10), transparent 24%),
+        linear-gradient(180deg, rgba(13, 23, 20, 0.94), rgba(7, 11, 10, 0.98));
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.85fr);
+      gap: 28px;
+      padding: 34px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(95,245,164,0.11);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 18px rgba(95,245,164,0.65);
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 0.97;
+      letter-spacing: -0.05em;
+      font-weight: 850;
+      max-width: 11ch;
+    }
+
+    .lead {
+      font-size: 19px;
+      color: #dbe8e2;
+      max-width: 58ch;
+      margin-bottom: 18px;
+    }
+
+    .copy {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 64ch;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 18px;
+      border-radius: 16px;
+      font-weight: 700;
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .button:hover { transform: translateY(-1px); }
+    .button.primary {
+      background: linear-gradient(135deg, var(--accent), #8df0ff);
+      color: #04110c;
+    }
+    .button.secondary {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      color: var(--text);
+    }
+
+    .hero-panel {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .panel-card {
+      padding: 20px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .panel-title {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+    }
+
+    .problem-list,
+    .reason-list,
+    .feature-list,
+    .faq-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .mini-stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      color: #effaf4;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .mini-stat strong {
+      color: var(--accent);
+      font-size: 15px;
+    }
+
+    .sections {
+      padding: 10px 0 72px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .section {
+      padding: 30px;
+    }
+
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 65ch;
+      margin-bottom: 20px;
+    }
+
+    .problem-grid,
+    .reason-grid,
+    .feature-grid,
+    .footer-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .tile {
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .tile h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .tile p,
+    .tile li {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0;
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .quote-card {
+      padding: 26px;
+      background:
+        radial-gradient(circle at top right, rgba(255,226,138,0.11), transparent 30%),
+        linear-gradient(180deg, rgba(18, 23, 21, 0.96), rgba(9, 14, 12, 0.96));
+    }
+
+    .quote-card blockquote {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 38px);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      font-weight: 780;
+    }
+
+    .quote-card cite {
+      display: block;
+      margin-top: 14px;
+      color: var(--muted);
+      font-style: normal;
+      font-size: 14px;
+    }
+
+    .founder-note {
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .founder-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 22px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.28);
+    }
+
+    .founder-note strong {
+      color: var(--accent);
+    }
+
+    .compare-table {
+      display: grid;
+      gap: 12px;
+    }
+
+    .compare-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .compare-cell {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.035);
+    }
+
+    .compare-cell h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .compare-cell.bad h3 { color: #ffcf9f; }
+    .compare-cell.good h3 { color: var(--accent); }
+
+    .faq details {
+      padding: 18px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .faq details:first-child { border-top: 0; }
+
+    .faq summary {
+      cursor: pointer;
+      list-style: none;
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq p { color: var(--muted); margin-top: 12px; }
+
+    .footer-card {
+      padding: 24px 28px;
+      background: linear-gradient(180deg, rgba(10, 15, 13, 0.98), rgba(7, 11, 10, 0.98));
+    }
+
+    .footer-grid {
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      align-items: start;
+    }
+
+    .footer-card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .footer-card p,
+    .footer-card li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: #dfece6;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .social-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      color: #e6f5ee;
+      font-weight: 700;
+    }
+
+    .social-link:hover {
+      color: var(--accent);
+    }
+
+    .entity-card {
+      margin-top: 16px;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .entity-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .small-note {
+      margin-top: 14px;
+      color: #91a49c;
+      font-size: 13px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .story,
+      .problem-grid,
+      .reason-grid,
+      .feature-grid,
+      .social-grid,
+      .footer-grid,
+      .compare-row {
+        grid-template-columns: 1fr;
+      }
+
+      h1 { max-width: 100%; }
+    }
+
+    @media (max-width: 680px) {
+      .topbar-inner,
+      .shell {
+        width: min(var(--max), calc(100% - 20px));
+      }
+
+      .hero-grid,
+      .section,
+      .footer-card {
+        padding: 22px;
+      }
+
+      .nav {
+        display: none;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "FullMind",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "iOS, iPadOS, macOS",
+      "url": "https://pandazen-fullmindmeditation.github.io/fullmind-site/",
+      "description": "A sleep-first meditation and relaxation app designed to help people with bedtime overthinking, stress, racing thoughts, and focus fatigue feel calmer faster through immersive scenes, layered sound environments, and gentle breathing visuals.",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "lowPrice": "4.99",
+        "highPrice": "29.99",
+        "offerCount": "2"
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "Mandeep Singh"
+      },
+      "sameAs": [
+        "https://www.instagram.com/fullmind.app/",
+        "https://www.threads.com/@fullmind.app",
+        "https://www.facebook.com/profile.php?id=61567452940495",
+        "https://pandazen-fullmindmeditation.github.io/fillmind-privacy/",
+        "https://pandazen-fullmindmeditation.github.io/fullmind-tos/"
+      ]
+    }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">
+        <img class="brand-mark" src="./assets/ios_app_icon.png" alt="FullMind app icon" />
+        <span>FullMind</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#story">Founder Story</a>
+        <a href="#why">Why It Helps</a>
+        <a href="#compare">Why FullMind</a>
+        <a href="./why-fullmind/">Best For</a>
+        <a href="#signals">Find FullMind</a>
+        <a href="./support/">Support</a>
+        <a href="https://pandazen-fullmindmeditation.github.io/fillmind-privacy/">Privacy</a>
+        <a href="https://pandazen-fullmindmeditation.github.io/fullmind-tos/" class="cta">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="advisory">Health advisory: FullMind supports general relaxation, sleep support, and stress management. It is not medical care.</div>
+
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">Sleep First. Stress Out Second.</div>
+            <h1>Fall asleep faster. Quiet the noise. Feel like you escaped.</h1>
+            <p class="lead">FullMind is for people who are tired of meditation feeling like homework. Instead of telling you what to think, it helps you drop into a calming space that feels more like your perfect vacation spot.</p>
+            <p class="copy">If your mind gets loud at night, if stress follows you into bed, or if focus feels impossible because your nervous system never really settles, FullMind gives you a gentler way back. Sleep and focus come first. Features come second.</p>
+            <p class="copy">This is a sleep app, meditation app, and relaxation app for people searching for help with overthinking, racing thoughts, stress relief, bedtime calm, and soft focus support.</p>
+
+            <div class="button-row">
+              <a class="button primary" href="./support/">Support & Contact</a>
+              <a class="button secondary" href="./why-fullmind/">Why people choose FullMind</a>
+              <a class="button secondary" href="#signals">See public profiles</a>
+              <a class="button secondary" href="#story">Read the founder story</a>
+            </div>
+          </div>
+
+          <aside class="hero-panel">
+            <div class="panel-card">
+              <div class="panel-title">Best For</div>
+              <div class="problem-list">
+                <div class="mini-stat"><strong>Sleep</strong> bedtime restlessness, overthinking, racing thoughts</div>
+                <div class="mini-stat"><strong>Stress</strong> mental overload, emotional fatigue, daily pressure</div>
+                <div class="mini-stat"><strong>Focus</strong> background calm for work, reading, and deep thought</div>
+              </div>
+            </div>
+
+            <div class="panel-card">
+              <div class="panel-title">How It Feels</div>
+              <p class="copy">Less like being instructed. More like stepping into a place where your body finally gets the signal that it can soften.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="sections">
+      <section class="section" id="story">
+        <h2>Why I made FullMind</h2>
+        <p class="section-intro">This app came from frustration first, then relief, then a surprise: people started telling me they were using it to fall asleep.</p>
+        <div class="story">
+          <div class="quote-card">
+            <blockquote>“I was fed up with meditation apps making me feel like I had to do something right. I wanted meditation to feel like I was enjoying my perfect vacation spot.”</blockquote>
+            <cite>Message from the founder</cite>
+          </div>
+          <div class="founder-note">
+            <img class="founder-photo" src="./assets/founder.png" alt="Founder portrait for FullMind" />
+            <p>I built FullMind because guided meditation often felt like another task on my list. I didn’t want more instructions. I wanted a space.</p>
+            <p>Later, in my darker periods, I used this app myself and it genuinely helped me settle. Then testers started telling me they were using it while they slept. That made me understand something bigger: FullMind was not just helping people meditate. It was helping people <strong>sleep</strong>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="why">
+        <h2>What problems FullMind is built for</h2>
+        <p class="section-intro">This is the real positioning of the app: sleep and focus first, with meditation as the experience that gets you there.</p>
+        <div class="problem-grid">
+          <article class="tile">
+            <h3>Bedtime overthinking</h3>
+            <p>When your body is tired but your mind keeps replaying, planning, or spiraling, FullMind helps create a softer landing into sleep.</p>
+          </article>
+          <article class="tile">
+            <h3>Stress that lingers</h3>
+            <p>For the moments when work, noise, or emotions stay with you long after the day ends, the app is designed to help you decompress without effortful practice.</p>
+          </article>
+          <article class="tile">
+            <h3>Focus without harshness</h3>
+            <p>If you want calm concentration instead of pressure-filled productivity, FullMind gives you atmosphere, rhythm, and breathing room.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>How it helps without making you work for it</h2>
+        <p class="section-intro">The features matter, but they are here to support the feeling, not the other way around.</p>
+        <div class="reason-grid">
+          <article class="tile">
+            <h3>Immersive scenes</h3>
+            <p>Visual environments are designed to feel like stepping into a place, not opening a checklist.</p>
+          </article>
+          <article class="tile">
+            <h3>Layered sleep audio</h3>
+            <p>Blend ambiance, background textures, harmony, and anchor voices into a setup that feels natural to you.</p>
+          </article>
+          <article class="tile">
+            <h3>Gentle breathing visuals</h3>
+            <p>When you want guidance, you can follow calm visual breathing cues without feeling pushed by narration.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="compare">
+        <h2>Why FullMind feels different</h2>
+        <p class="section-intro">Most apps tell you what to do. FullMind is built around what you want to feel.</p>
+        <div class="compare-table">
+          <div class="compare-row">
+            <div class="compare-cell bad">
+              <h3>What other apps often feel like</h3>
+              <p>Another guided session. Another voice in your head. Another routine that asks you to perform calmness correctly.</p>
+            </div>
+            <div class="compare-cell good">
+              <h3>What FullMind is trying to be</h3>
+              <p>A place where you can slide into sleep, softness, and focus by surrounding yourself with the right atmosphere.</p>
+            </div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-cell bad">
+              <h3>Too much effort</h3>
+              <p>You have to follow, listen, keep up, and stay mentally switched on.</p>
+            </div>
+            <div class="compare-cell good">
+              <h3>Less effort, more surrender</h3>
+              <p>You can simply let the environment carry more of the work when your mind has had enough.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="signals">
+        <h2>How FullMind shows up in the world</h2>
+        <p class="section-intro">For search engines, AI assistants, and real people, these are the public identity signals connected to FullMind today.</p>
+        <div class="social-grid">
+          <article class="tile">
+            <h3>Instagram</h3>
+            <p>Primary public profile for FullMind. If someone searches for <strong>FullMind app</strong> or <strong>@fullmind.app</strong>, this is one of the clearest public references.</p>
+            <a class="social-link" href="https://www.instagram.com/fullmind.app/">@fullmind.app</a>
+          </article>
+          <article class="tile">
+            <h3>Threads</h3>
+            <p>The same social identity is also present on Threads, helping connect the brand name, the handle, and the sleep-first meditation positioning.</p>
+            <a class="social-link" href="https://www.threads.com/@fullmind.app">@fullmind.app</a>
+          </article>
+          <article class="tile">
+            <h3>Facebook</h3>
+            <p>FullMind also has a public Facebook presence for users who want another way to verify the product and reach the brand on the open web.</p>
+            <a class="social-link" href="https://www.facebook.com/profile.php?id=61567452940495">Open Facebook page</a>
+          </article>
+        </div>
+        <div class="entity-card">
+          <p><strong>Plain-language identity:</strong> FullMind is a sleep-first meditation and relaxation app built to help with racing thoughts, bedtime overthinking, stress relief, and calm focus. It is not a medical treatment platform, and it does not claim to diagnose, treat, cure, or prevent disease.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Features, second</h2>
+        <p class="section-intro">If someone wants the practical side, this is what FullMind includes today.</p>
+        <div class="feature-grid">
+          <article class="tile">
+            <h3>Energy Mixer</h3>
+            <p>Create your own sleep, meditation, or focus environment with layered sound controls.</p>
+          </article>
+          <article class="tile">
+            <h3>Zen Community</h3>
+            <p>Browse scenes and voices that help you load a calming setup quickly instead of building one from scratch every time.</p>
+          </article>
+          <article class="tile">
+            <h3>Saved presets</h3>
+            <p>Keep the combinations that help you most and return to them when you need sleep support or mental reset fast.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section faq">
+        <h2>Questions people may ask</h2>
+        <div class="faq-list">
+          <details open>
+            <summary>Is FullMind a sleep app or a meditation app?</summary>
+            <p>Both, but its emotional center is sleep-first and relief-first. Meditation is the experience language. Calm sleep support is the outcome many people care about most.</p>
+          </details>
+          <details>
+            <summary>Do I have to create my own mix?</summary>
+            <p>No. You can explore community scenes and quick-load options first. The deeper controls are there when you want them, not as a requirement.</p>
+          </details>
+          <details>
+            <summary>Is this medical treatment?</summary>
+            <p>No. FullMind is for general relaxation, stress management, mindfulness, and sleep support. It is not a substitute for medical advice, diagnosis, or treatment.</p>
+          </details>
+        </div>
+      </section>
+
+      <footer class="footer-card">
+        <div class="footer-grid">
+          <section>
+            <h3>FullMind</h3>
+            <p>Sleep-first meditation for people who want relief, atmosphere, and a calmer mind without being ordered around by another guided routine.</p>
+            <p class="small-note">Health advisory: FullMind supports general relaxation, stress management, mindfulness, and sleep support only. It is not a medical app.</p>
+          </section>
+
+          <section>
+            <h3>Support</h3>
+            <div class="footer-links">
+              <a href="./support/">Support and contact</a>
+              <a href="./why-fullmind/">Why people choose FullMind</a>
+              <a href="mailto:fullmind-meditation-support@googlegroups.com">fullmind-meditation-support@googlegroups.com</a>
+              <a href="https://www.instagram.com/fullmind.app/">Instagram: @fullmind.app</a>
+              <a href="https://www.threads.com/@fullmind.app">Threads: @fullmind.app</a>
+            </div>
+          </section>
+
+          <section>
+            <h3>Legal</h3>
+            <div class="footer-links">
+              <a href="https://pandazen-fullmindmeditation.github.io/fillmind-privacy/">Privacy Policy</a>
+              <a href="https://pandazen-fullmindmeditation.github.io/fullmind-tos/">Terms of Service</a>
+            </div>
+          </section>
+        </div>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>

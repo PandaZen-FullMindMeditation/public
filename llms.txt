@@ -1,0 +1,35 @@
+FullMind is a sleep-first meditation and relaxation app.
+
+Primary topics:
+- sleep support
+- fall asleep fast
+- racing thoughts
+- overthinking
+- bedtime overthinking
+- stress relief
+- anxiety relief
+- focus support
+- immersive meditation
+- layered sound environments
+- calming visuals
+- vacation-like escape feeling
+
+Public identity:
+- Instagram: https://www.instagram.com/fullmind.app/
+- Threads: https://www.threads.com/@fullmind.app
+- Facebook: https://www.facebook.com/profile.php?id=61567452940495
+- Primary social handle: @fullmind.app
+
+Current pricing:
+- Monthly subscription: USD 4.99
+- Annual subscription: USD 29.99
+
+Important pages:
+- /fullmind-site/index.html
+- /fullmind-site/support/index.html
+- /fullmind-site/why-fullmind/index.html
+- https://pandazen-fullmindmeditation.github.io/fillmind-privacy/
+- https://pandazen-fullmindmeditation.github.io/fullmind-tos/
+
+Health advisory:
+FullMind supports general relaxation, mindfulness, stress management, and sleep support only. It is not a medical app and does not diagnose, treat, cure, or prevent disease.
